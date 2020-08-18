@@ -123,12 +123,12 @@ function CreateFile {
     #Makes the SAMAccountname of the computer
     $pc_samaccountname = $pc + "$"
 
-    #Fügt den Benutzer in die Lokale Remotedesktopbenutzer Grupp hinzu
+    #Adds the user to the local Remotedesktopuser
     Invoke-Command -ScriptBlock {
         Add-LocalGroupMember -Group $Using:localgroupe -Member $Using:samaccountname
     } -ComputerName $pc
 
-    #Fügt den Benutzer den AD-Gruppen hinzu
+    #Adds the user and computer to the AD-Groups
     if($AD_PC_GROUP)
     {
         Add-ADGroupMember -Identity $AD_PC_GROUP -Members $pc_samaccountname
@@ -203,10 +203,10 @@ function CreateFile {
     $checkbox1.Checked = $false
 }
 
-#Aufgabe wenn auf Ok geklickt wird
+#If user clicks ok --> function
 $OkButton.Add_Click({CreateFile})
 
-#Fügt die Textblöcke hinzu (dadurch sind sie in der GUI sichtbar)
+#Creates the GUI
 $main.Controls.AddRange(@($MainText,$description,$CancleButton,$OkButton,$txtbox_username,$txt_username,$txt_computername,$txtbox_computername,$checkbox1))
 
 [void]$main.ShowDialog()
