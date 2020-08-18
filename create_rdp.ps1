@@ -95,7 +95,7 @@ $OkButton.ForeColor = "#ffffff"
 #Cancel Button
 $CancleButton = New-Object System.Windows.Forms.Button
 $CancleButton.BackColor = "#ffffff"
-$CancleButton.Text = "Abbrechen"
+$CancleButton.Text = "Cancel"
 $CancleButton.Width = 90
 $CancleButton.Height = 30
 $CancleButton.Location = New-Object System.Drawing.Point (300,320)
